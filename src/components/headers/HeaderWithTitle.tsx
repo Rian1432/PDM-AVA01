@@ -1,21 +1,18 @@
 import React from "react";
 import { Stack } from "expo-router";
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { View, StyleSheet } from "react-native";
+import MenuButton from "../shared/MenuButton";
 
-type HeaderWithTitleProps = {
-  title: string;
-};
-
-const menuButton = () => {
-    return (
-        <View style={styles.buttonContainer}>
-            <Ionicons name="menu-outline" size={32} color="black" />
-        </View>
-    )
+type Link = {
+  name: string
+  path: string 
 }
 
-export default function HeaderWithTitle({ title }: HeaderWithTitleProps) {
+type HeaderWithTitleProps = {
+  title: string
+  links?: Link[]
+};
+
+export default function HeaderWithTitle({ title, links }: HeaderWithTitleProps) {
   return (
     <Stack.Screen
       options={{
@@ -23,14 +20,8 @@ export default function HeaderWithTitle({ title }: HeaderWithTitleProps) {
         headerTitleStyle: {
             fontSize: 24,
         },
-        headerRight: () => menuButton(),
+        headerRight: () => <MenuButton links={links} />,
       }}
     />
   );
 }
-
-const styles = StyleSheet.create({
-    buttonContainer: {
-      marginHorizontal: 12
-    },
-  });

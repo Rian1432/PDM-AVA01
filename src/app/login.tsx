@@ -1,11 +1,39 @@
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FullScreen from '../components/containers/FullScreen'
 import HeaderHidden from '../components/headers/HeaderHidden'
+import { router } from 'expo-router'
+import ImageButton from '../components/shared/ImageButton'
+import { useAuth } from '../store/AuthContext'
 
 export default function login() {
+    const { login } = useAuth();
+
     const [username, onChangeUserName] = useState('')
     const [password, onChangePassword] = useState('')
+    const [errorMessage, setError] = useState('')
+
+    // Imagem de teste para o ImageButton
+    // const buttonImage = 'https://superprix.vteximg.com.br/arquivos/ids/175172-600-600/Batata-Especial--1-unidade-aprox.-200g-.png?v=636294173813730000'
+
+    useEffect(() => {
+        setError('')
+    }, [username])
+
+    useEffect(() => {
+        setError('')
+    }, [password])
+
+    const handleSubmit = () => {
+        if (username === 'fulano' && password === '123') {
+            login()
+            router.replace('/')
+        } else if (username === '' && password === '') {
+            setError('Preencha os campos.')
+        } else {
+            setError('Usuário ou senha inválidos.')
+        }
+    }
 
     return (
         <FullScreen center>
@@ -31,8 +59,11 @@ export default function login() {
                     secureTextEntry 
                 />
 
-                {/* mudar para button personalizado */}
-                <Button title='Entrar' />
+                <Text style={styles.errorMessage}>
+                    { errorMessage }
+                </Text>
+
+                <ImageButton title='Entrar' customStyle={{backgroundColor: 'red'}} handlePress={handleSubmit} />
             </View>
         </FullScreen>
     )
@@ -53,5 +84,9 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderRadius: 6,
         padding: 10
+    },
+    errorMessage: {
+        color: 'red',
+        fontWeight: '500'
     }
-  });
+});

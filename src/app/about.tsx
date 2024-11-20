@@ -1,10 +1,14 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import HeaderWithTitle from '../components/headers/HeaderWithTitle'
+import Scrollable from '../components/containers/Scrollable'
 
 export default function about() {
   return (
-    <View>
-      <Text>about</Text>
-    </View>
+    <Scrollable>
+        <HeaderWithTitle title='Sobre' />
+
+        <Text>About</Text>
+    </Scrollable>
   )
 }

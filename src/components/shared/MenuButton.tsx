@@ -27,7 +27,6 @@ export default function MenuButton({links}: MenuButtonProps) {
       });
     }
     
-    console.log(options);
     const destructiveButtonIndex = options.length - 1;
     const cancelButtonIndex = - 1;
     const showSeparators = true
@@ -46,13 +45,11 @@ export default function MenuButton({links}: MenuButtonProps) {
       if(selectedIndex === - 1) { 
         return
       }
-
-      console.log(selectedIndex);
       
-      const route = links?.find(link => link.name === options[selectedIndex])?.path
+      const route = links?.find(link => link.name === options[selectedIndex])
 
       if(route) {
-        router.push(route)
+        router.push(route.path)
       }
     });
   }

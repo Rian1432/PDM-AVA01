@@ -63,7 +63,7 @@ export default function login() {
                     { errorMessage }
                 </Text>
 
-                <ImageButton title='Entrar' customStyle={{backgroundColor: 'red'}} handlePress={handleSubmit} />
+                <ImageButton title='Entrar' customStyle={{backgroundColor: '#339488'}} handlePress={handleSubmit} />
             </View>
         </FullScreen>
     )
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
     },
     input: {
+        width: 230,
         borderWidth: 1,
         borderColor: 'black',
         borderRadius: 6,

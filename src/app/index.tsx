@@ -26,8 +26,6 @@ export default function index() {
         )}
         renderItem={({item}) => (
           <View style={styles.item}>
-            {/* <Image style={styles.avatar} source={{uri: item.passenger_avatar}} /> */}
-
             <View>
               <View style={styles.travelInfo}>
                 <Text style={styles.subTitle}>Passageiro:</Text>
@@ -53,13 +51,13 @@ export default function index() {
 
 const styles = StyleSheet.create({
   pageTitle: {
-    fontSize: 28,
+    fontSize: 24,
     textAlign: 'center',
   },
   item: {
     backgroundColor: '#c9e8f2',
-    padding: 20,
-    marginVertical: 8,
+    padding: 10,
+    marginVertical: 4,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -78,10 +76,4 @@ const styles = StyleSheet.create({
   subTitle: {
     fontWeight: 'bold'
   },
-  avatar: {
-    width: 70,
-    height: 70,
-    backgroundColor: '#fff',
-    borderRadius: 50
-  }
 });

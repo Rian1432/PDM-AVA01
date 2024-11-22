@@ -13,36 +13,22 @@ type transformedData = {
 
 
 export function transformData (data: TravelData[]):transformedData[] {
-    const allLocations:string[] = getLocationsNames()
+    let allLocations:string[] = []
 
-    return allLocations.map((location) => {
-        return {
-            title: location,
-            data: filterByLocation(location)
+    data.forEach((n) => {
+        if(!allLocations.includes(n.destination)) {
+            allLocations.push(n.destination)
         }
+    
+        if(!allLocations.includes(n.origin)) {
+            allLocations.push(n.origin)
+        }      
     })
 
-    function getLocationsNames () {
-        const destinations:string[] = []
-    
-        data.forEach((n) => {
-            if(!destinations.includes(n.destination)) {
-                destinations.push(n.destination)
-            }
-    
-            if(!destinations.includes(n.origin)) {
-                destinations.push(n.origin)
-            }      
-        })
-    
-        return destinations
-    }
-
-    function filterByLocation (location: string):TravelData[] {
-        return data.filter((item) => {
-            if (item.destination === location || item.origin === location) {
-                return item
-            }
-        })
-    } 
+    return allLocations.sort().map((location) => {
+        return {
+            title: location,
+            data: data.filter((item) => item.destination === location || item.origin === location)
+        }
+    })
 }

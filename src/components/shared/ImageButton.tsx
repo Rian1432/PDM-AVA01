@@ -9,37 +9,32 @@ type ImageButtonProps = {
 }
 
 export default function ImageButton({ title, source, handlePress, customStyle }: ImageButtonProps) {
-    const renderButtonContent = () => {
-        if(source) {
-            return <Image source={{uri: source}} style={styles.image} />
-        }
-        return <Text>{title}</Text>
-    }
-
     return (
         <TouchableOpacity onPress={handlePress} style={[styles.button, customStyle]}>
-            {renderButtonContent()}
+            <Image source={{uri: source}} style={styles.image} />
+            <Text style={styles.title}>{title}</Text>
         </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     button: {
-        padding: 10,
+        position: 'relative',
         borderRadius: 6,
         backgroundColor: '#ccc',
-        minHeight: 30,
-        minWidth: 80,
+        minHeight: 35,
+        minWidth: 100,
         justifyContent: 'center',
         alignItems: 'center'
     },
     image: {
-        width: 100,
-        height: 30,
+        width: '100%',
+        height: 35,
         borderRadius: 6,
     },
     title: {
         color: 'black',
-        textAlign: 'center'
+        textAlign: 'center',
+        position: 'absolute',
     },
 });

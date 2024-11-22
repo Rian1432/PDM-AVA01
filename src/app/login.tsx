@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import FullScreen from '../components/containers/FullScreen'
 import HeaderHidden from '../components/headers/HeaderHidden'
@@ -41,6 +41,8 @@ export default function login() {
         <FullScreen center>
             <HeaderHidden />
 
+            <Image source={require('../../assets/logo.png')} style={styles.logo} />
+
             <View style={styles.formContainer}>
                 <Text style={styles.welcomeText}>Bem-vindo!</Text>
                 <Text style={styles.title}>login</Text>
@@ -72,6 +74,15 @@ export default function login() {
                     handlePress={handleSubmit} 
                 />
             </View>
+
+            <View style={styles.helpContainer}>
+                <Text style={styles.helpText}>
+                    Usuário: fulano
+                </Text>
+                <Text style={styles.helpText}>
+                    Senha: 123
+                </Text>
+            </View>
         </FullScreen>
     )
 }
@@ -84,6 +95,11 @@ const styles = StyleSheet.create({
     welcomeText: {
         color: THEME_COLORS.GRAY_COLOR,
         fontSize: 20,
+    },
+    logo: {
+        width: 150,
+        height: 120,
+        marginBottom: 20,
     },
     title: {
         fontSize: 30,
@@ -99,5 +115,11 @@ const styles = StyleSheet.create({
     errorMessage: {
         color: THEME_COLORS.ERROR_COLOR,
         fontWeight: '500',
+    },
+    helpContainer: {
+        marginTop: 30,
+    },
+    helpText: {
+        color: THEME_COLORS.GRAY_COLOR,
     }
 });

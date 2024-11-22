@@ -1,15 +1,27 @@
 import { View, Text, SectionList, StyleSheet, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import HeaderWithTitle from '../components/headers/HeaderWithTitle'
 import Scrollable from '../components/containers/Scrollable'
 import data from '../services/data-passengers'
 import { transformData } from '../helpers/helpers'
 import { THEME_COLORS, THEME_FONTS } from '../constants/globalStyles'
+import { router } from 'expo-router'
+import { useAuth } from '../store/AuthContext'
 
 export default function index() {
   const menuLinks = [
     { name: 'Sobre', path: '/about' }
   ]
+
+  const {isLoggedIn} = useAuth();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      setTimeout(() => {
+        router.replace('/login');
+      }, 1)
+    }
+  }, []);
 
   return (
     <Scrollable>

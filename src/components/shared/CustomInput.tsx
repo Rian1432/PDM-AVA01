@@ -48,9 +48,6 @@ const styles = StyleSheet.create({
     },
     input: {
         width: 230,
-        // borderBottomWidth: 1,
-        // borderColor: THEME_COLORS.GRAY_COLOR,
-        // padding: 10,
         outlineWidth: 0,
     },
     inputFocused: {

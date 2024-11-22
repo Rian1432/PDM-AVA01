@@ -1,5 +1,6 @@
 import { Text, TouchableOpacity, Image, StyleSheet, ImageSourcePropType } from 'react-native'
 import React from 'react'
+import { THEME_COLORS } from '../../constants/globalStyles'
 
 type ImageButtonProps = {
     title?: string
@@ -20,21 +21,22 @@ export default function ImageButton({ title, source, handlePress, customStyle }:
 const styles = StyleSheet.create({
     button: {
         position: 'relative',
-        borderRadius: 6,
-        backgroundColor: '#ccc',
-        minHeight: 35,
-        minWidth: 100,
+        borderRadius: 20,
+        backgroundColor: THEME_COLORS.PRIMARY_COLOR,
+        minHeight: 45,
+        minWidth: 200,
         justifyContent: 'center',
         alignItems: 'center'
     },
     image: {
         width: '100%',
-        height: 35,
-        borderRadius: 6,
+        height: 45,
+        borderRadius: 20,
     },
     title: {
-        color: 'black',
+        color: THEME_COLORS.BASE_COLOR,
         textAlign: 'center',
         position: 'absolute',
+        fontWeight: 'bold'
     },
 });

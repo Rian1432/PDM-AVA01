@@ -4,6 +4,7 @@ import HeaderWithTitle from '../components/headers/HeaderWithTitle'
 import Scrollable from '../components/containers/Scrollable'
 import { Link } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
+import { THEME_COLORS, THEME_FONTS } from '../constants/globalStyles'
 
 export default function about() {
   return (
@@ -26,14 +27,14 @@ export default function about() {
 
 const styles = StyleSheet.create({
   pageTitle: {
-    fontSize: 28,
+    fontSize: THEME_FONTS.PAGE_TITLE_SIZE,
     textAlign: 'center',
   },
   textBold: {
     fontWeight: 'bold'
   },
   item: {
-    backgroundColor: '#c9e8f2',
+    backgroundColor: THEME_COLORS.BASE_COLOR,
     padding: 20,
     marginVertical: 8,
     borderRadius: 10,

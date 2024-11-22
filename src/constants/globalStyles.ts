@@ -3,6 +3,14 @@ export enum DEFAULT_SPACES {
     DEFAULT_GAP = 5,
 }
 
-export enum DEFAULT_COLORS {
-    
+export enum THEME_COLORS {
+    BASE_COLOR = '#FFFFFF',
+    GRAY_COLOR = '#B4BEC9',
+    PRIMARY_COLOR = '#159A9C',
+    SECONDARY_COLOR = '#002333',
+    ERROR_COLOR = '#e8593c',
+}
+
+export enum THEME_FONTS {
+    PAGE_TITLE_SIZE = 20,
 }

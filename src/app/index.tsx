@@ -4,6 +4,7 @@ import HeaderWithTitle from '../components/headers/HeaderWithTitle'
 import Scrollable from '../components/containers/Scrollable'
 import data from '../services/data-passengers'
 import { transformData } from '../helpers/helpers'
+import { THEME_COLORS, THEME_FONTS } from '../constants/globalStyles'
 
 export default function index() {
   const menuLinks = [
@@ -18,6 +19,8 @@ export default function index() {
 
       <SectionList
         sections={transformData(data)}
+        stickySectionHeadersEnabled={true}
+        stickyHeaderHiddenOnScroll={true}
         keyExtractor={(item) => item.id.toString()}
         renderSectionHeader={({section: {title}}) => (
           <Text style={styles.header}>
@@ -51,22 +54,22 @@ export default function index() {
 
 const styles = StyleSheet.create({
   pageTitle: {
-    fontSize: 24,
+    fontSize: THEME_FONTS.PAGE_TITLE_SIZE,
     textAlign: 'center',
   },
   item: {
-    backgroundColor: '#c9e8f2',
+    backgroundColor: THEME_COLORS.BASE_COLOR,
+    marginVertical: 1,
     padding: 10,
-    marginVertical: 4,
-    borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10
   },
   header: {
+    color: THEME_COLORS.PRIMARY_COLOR,
     fontSize: 22,
     marginTop: 20,
     marginBottom: 5,
+    paddingHorizontal: 10,
   },
   travelInfo: {
     flexDirection: 'row',

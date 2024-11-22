@@ -1,10 +1,12 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import FullScreen from '../components/containers/FullScreen'
 import HeaderHidden from '../components/headers/HeaderHidden'
 import { router } from 'expo-router'
 import ImageButton from '../components/shared/ImageButton'
 import { useAuth } from '../store/AuthContext'
+import { THEME_COLORS } from '../constants/globalStyles'
+import CustomInput from '../components/shared/CustomInput'
 
 export default function login() {
     const { login } = useAuth();
@@ -40,30 +42,35 @@ export default function login() {
             <HeaderHidden />
 
             <View style={styles.formContainer}>
-
-
+                <Text style={styles.welcomeText}>Bem-vindo!</Text>
                 <Text style={styles.title}>login</Text>
 
-                <TextInput 
-                    style={styles.input} 
-                    value={username} 
-                    onChangeText={onChangeUserName}
-                    placeholder="Username"
+                <View style={styles.inputGroup}>
+                    <CustomInput 
+                        placeholder="Nome"
+                        icon='person'
+                        value={username} 
+                        onChangeText={onChangeUserName}
+                    />
+
+                    <CustomInput 
+                        placeholder="Senha"
+                        icon='key'
+                        value={password} 
+                        onChangeText={onChangePassword}
+                        secureTextEntry
+                    />
+
+                    <Text style={styles.errorMessage}>
+                        { errorMessage }
+                    </Text>
+                </View>
+
+                <ImageButton 
+                    title='Entrar'
+                    customStyle={{backgroundColor: THEME_COLORS.PRIMARY_COLOR}} 
+                    handlePress={handleSubmit} 
                 />
-
-                 <TextInput
-                    style={styles.input}
-                    value={password}
-                    onChangeText={onChangePassword}
-                    placeholder="Password"
-                    secureTextEntry 
-                />
-
-                <Text style={styles.errorMessage}>
-                    { errorMessage }
-                </Text>
-
-                <ImageButton title='Entrar' customStyle={{backgroundColor: '#339488'}} handlePress={handleSubmit} />
             </View>
         </FullScreen>
     )
@@ -73,21 +80,24 @@ const styles = StyleSheet.create({
     formContainer: {
         flexDirection: 'column',
         gap: 15,
-        justifyContent: 'center',
-        alignItems: 'center'
+    },
+    welcomeText: {
+        color: THEME_COLORS.GRAY_COLOR,
+        fontSize: 20,
     },
     title: {
         fontSize: 30,
+        textAlign: 'left',
+        marginBottom: 20,
     },
-    input: {
-        width: 230,
-        borderWidth: 1,
-        borderColor: 'black',
-        borderRadius: 6,
-        padding: 10
+    inputGroup: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 15,
     },
     errorMessage: {
-        color: 'red',
-        fontWeight: '500'
+        color: THEME_COLORS.ERROR_COLOR,
+        fontWeight: '500',
     }
 });

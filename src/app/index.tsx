@@ -7,6 +7,7 @@ import { transformData } from '../helpers/helpers'
 import { THEME_COLORS, THEME_FONTS } from '../constants/globalStyles'
 import { router } from 'expo-router'
 import { useAuth } from '../store/AuthContext'
+import FullScreen from '../components/containers/FullScreen'
 
 export default function index() {
   const menuLinks = [
@@ -24,7 +25,7 @@ export default function index() {
   }, []);
 
   return (
-    <Scrollable>
+    <FullScreen>
       <HeaderWithTitle title='Home' links={menuLinks} />
 
       <Text style={styles.pageTitle}>Lista de passageiros</Text>
@@ -60,7 +61,7 @@ export default function index() {
           </View>
         )}
       />
-    </Scrollable>
+    </FullScreen>
   )
 }   
 
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
   pageTitle: {
     fontSize: THEME_FONTS.PAGE_TITLE_SIZE,
     textAlign: 'center',
+    marginBottom: 20,
   },
   item: {
     backgroundColor: THEME_COLORS.BASE_COLOR,
@@ -79,9 +81,10 @@ const styles = StyleSheet.create({
   header: {
     color: THEME_COLORS.PRIMARY_COLOR,
     fontSize: 22,
-    marginTop: 20,
     marginBottom: 5,
     paddingHorizontal: 10,
+    backgroundColor: THEME_COLORS.BASE_COLOR,
+    paddingVertical: 5,
   },
   travelInfo: {
     flexDirection: 'row',
